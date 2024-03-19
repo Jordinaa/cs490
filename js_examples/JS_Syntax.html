@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script>
+        
+    function general_Text() { 
+        var x = 3+2;
+        var y = x-9;
+        
+        var name = "Samir"; // String assigned by a string literal
+        var computers = ["Dell", "Toshiba", "HP"]; // Array  assigned by an array literal
+        var student = {name:"John", ID:"1234"}; // Object assigned by an object literal
+       
+       var result="";
+       
+       result+="x: "+x+"<br>";
+       result+="y: "+y+"<br>";
+       result+="Name: "+name+"<br>";
+       result+="computers <br>";
+       
+       for(var i=0;i<computers.length;i++)
+           result+=computers[i]+"<br>";
+       
+       result+="student <br>";
+       
+       result+=" name: "+student.name+" ID: "+student.ID;
+       
+       var div=document.getElementById("container");
+       
+       div.innerHTML=result;
+           
+    }
+    </script>
+
+</head>
+<body>
+
+    <button onclick="general_Text()"> Go!</button>
+    
+    <div id="container"></div>
+
+    
+</body>
+</html>
+

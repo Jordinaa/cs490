@@ -1,0 +1,94 @@
+
+
+.album{
+    position:relative;
+    background-color:lightcyan;
+    width:500px;
+    height:450px;
+    overflow:hidden;   
+}
+
+div.photos{
+    position:absolute;
+    left:0px;
+    width:500px;
+    height:450px;
+    transition: 1s; /*Standard, IE 10*/
+    -webkit-transition: 1s; /* For Chrome, Safari*/
+    -moz-transition: 1s; /* For Firefox*/
+    -o-transition: 1s; /* For Opera*/
+}
+
+.circle,.selected_circle{
+    background-color:rgb(0,151,151);
+    border-radius:5px;
+    width:10px;
+    height:10px;
+    float:left;
+    margin-right:5px;
+}
+
+.circle:hover{
+    background-color:rgb(0,106,106);
+    cursor:pointer;
+}
+
+.selected_circle{
+    background-color:orange;
+}
+
+.selected_circle:hover{
+    background-color:darkorange;
+    cursor:pointer;
+}
+
+.circles{
+    background-color: yellow;
+    margin-left:auto;
+    margin-right:auto;
+}
+
+.navigator{
+    background-color:rgb(206,255,255);
+    width:500px;
+    height:40px;
+    text-align: center; 
+}
+
+
+
+
+div.photo{
+    position:relative;
+    float:left;
+    width:462px;
+    height:412px;
+    margin:20px;
+}
+
+
+
+div.photo img {
+    position:absolute;
+    top:0px;
+    left:0px;
+    background-color: white;
+    padding: 5px;
+    border:1px solid lightgray;
+    width: 450px;
+    height: 400px;
+}
+
+div.photo div.description{
+    position:absolute;
+    bottom:6px;
+    left:6px;
+    height:75px;
+    width:450px;
+    color:white;
+    background-color:rgba(0,0,0,0.3);
+    text-align:center;
+    line-height: 75px;
+    font-size:35px;
+}
+

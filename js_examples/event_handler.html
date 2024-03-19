@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script>
+            function $(id) {
+                return document.getElementById(id);
+            }
+            function changeText() {
+                $("text").innerHTML = "Hello " + $("field").value;
+            }
+            function init(){
+            $("button").addEventListener('click', changeText);
+            $("button").addEventListener('click', function() {
+                alert("another click");
+            });
+        }
+        </script>
+    </head>
+    <body onload="init()">
+        First name: <input id="field" type="text" name="firstname">
+        <button id="button"> Go!</button>
+        <h3 id="text"> Hello there!</h3>
+    </body>
+
+</html>
+

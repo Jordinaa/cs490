@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        div.canvas{
+            margin-top:30px;
+            margin-left:30px;
+            width:300px;
+            height:300px;
+            display:block;
+            background-color:yellow;
+        }
+</style>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+<script>
+    
+    
+    $(document).ready(function () { //this function gets called when the document has finished loading
+    var message="";
+        $('#canvas').on('mousemove',function(e){ 
+         //   message+="\nMouse move : "+e.clientX+","+e.clientY;
+      // $("#message").text(message);
+    });
+     $('#canvas').on('mouseout',function(){ 
+         message+="Mouse out, ";
+       $("#message").text(message);
+    });   
+     $('#canvas').on('mousedown',function(){ 
+         message+="Mouse down, ";
+       $("#message").text(message);
+    }); 
+    $('#canvas').on('mouseup',function(){ 
+        message+="Mouse up, ";   
+       $("#message").text(message);
+    }); 
+    $('#canvas').on('click',function(){ 
+         message+="Click!, ";
+       $("#message").text(message);
+    }); 
+     $('#canvas').on('dblclick',function(){ 
+         message+="Double Click!, ";
+       $("#message").text(message);
+    });    
+    
+});
+
+</script>
+
+</head>
+<body>
+    
+    <div id="canvas" class="canvas"></div>
+    <div id="message"></div>
+
+
+    
+</body>
+</html>
+

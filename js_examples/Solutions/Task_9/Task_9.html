@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Photos</title>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" type="text/css" href="photos.css">
+        <script id="photo-template" type="text/html">
+        <div class='photo'>
+            <img src='{{path}}'>
+            <div class='description'>{{description}}</div>
+            <div class='date'>{{date}}</div>    
+        </div> 
+    </script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script src="htmlMaker.js"></script>
+    <script src="data.js"></script>
+    <script src="photos.js"></script>
+</head>
+<body> 
+
+    <div class="icons">
+        <select id="combo_box">
+            <option>description</option>
+            <option>date</option>
+        </select>
+        <img id="list_icon" title="list" src="list.jpg">
+        <img id="grid_icon" title="grid" src="grid_pressed.jpg">
+    </div>
+    <div id="photos" class="grid">
+    </div>
+</body>
+</html>

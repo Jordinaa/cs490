@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Show local storage</title>
+        <meta charset="UTF-8">
+        <script>
+            function $(id){
+                return document.getElementById(id);
+            }
+            
+            function init(){
+              $("name").innerHTML=  localStorage.getItem("name");
+            }
+            
+        </script>
+    </head>
+    <body onload="init()">
+        <div id="name"></div>
+    </body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>String Functions 1</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script>
+            function string_functions(){
+                var text="Software Engineering";
+                var char=text.charAt(1); //this should return o
+                var first_index=text.indexOf("i"); //this should return 11, index of first i
+                var last_index=text.lastIndexOf("i"); //this should return 17, index of last i
+                var substring=text.substr(4,4); //this should return ware
+                var capital_text= text.toUpperCase(); //this should return SOFTWARE ENGINEERING
+                var pos = text.search("ware"); //this should return 4
+                var slic=text.slice(-10,-4);
+                var txt = "a,b,c,d,e";   // String
+                var array=txt.split(",");          // Split on commas
+            }
+        </script>
+    </head>
+    <body onload="string_functions()">
+    </body>
+</html>

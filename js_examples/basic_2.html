@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script>
+        
+    function $(id){
+            return document.getElementById(id);
+        }
+        
+    function changeText() { 
+        $("text").innerHTML = "Hello " + $("field").value;
+    }
+    </script>
+
+</head>
+<body>
+    First name: <input id="field" type="text" name="firstname">
+    <button onclick="changeText()"> Go!</button>
+    <h3 id="text"> Hello there!</h3>
+    
+</body>
+</html>
+

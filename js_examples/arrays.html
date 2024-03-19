@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Arrays</title>
+        <meta charset="UTF-8">
+        <script>
+            function run(){
+                var arr1 = ["Banana","Apple","Grapes","Mango"];
+                var arr2 = new Array("Banana","Apple","Grapes","Mango");
+                var arr3 = new Array(4); //Creates an array with 4 undefined elements
+                console.log(arr1.length);
+                /** access items **/
+                var first_element=arr1[0]; //returns Banana
+                var third_element=arr1[2]; //returns grapes
+                
+                /**change item at index 3**/
+                arr1[3]="Kiwi";
+                
+                /** add items **/
+                arr1[arr1.length]="Pineapple"; //add "Pineapple" to the end
+                
+                /*iterate through an array*/
+                for(var i=0;i<arr1.length;i++){
+                    var val=arr1[i];
+                    console.log(val);
+                }
+                
+                arr1.push("Watermelon"); //add "Watermelon" to the end
+                
+                arr1.pop(); //removes the last element
+                arr1.shift(); //removes the first element
+                arr1.unshift("Orange"); //add orange to the front of the array
+                arr1.splice(1,2); //remove 2 items starting from index 1
+                arr1.splice(1,2,"Strawberry","Blueberry"); //remove 2 items starting from index 1, and add "Strawberry", and "Blueberry"
+                
+                var arr2_string=arr2.toString(); //returns a string representation of the array
+                var arr2_string=arr2.join(" - "); //returns the items seperated by " - "
+                arr2.reverse();         // Reverses the order of the arr2
+                
+                arr2.sort();            // ascending sort arr2 works for strings only
+                
+                var arr4=[5,1,10,3,5];
+                arr4.sort(function(a, b){return a==b?0:a<b?-1:1;}); //ascending sort
+                arr4.sort(function(a, b){return a==b?0:a>b?-1:1;}); //descending sort
+                
+            }
+            
+            function a_sort(a,b){
+                return a==b?0:a>b?1:-1;
+            }
+        </script>
+    </head>
+    <body onload="run()">
+    </body>
+</html>

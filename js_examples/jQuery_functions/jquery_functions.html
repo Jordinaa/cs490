@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>jQuery Functions</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+        <script>
+            $(document).ready(function () {
+                init();
+            });
+
+            function init() {
+                $("#topic").text("Hello UMKC Students!");
+                $("#content").html("<ul><li>item 1</li><li>item 2</li></ul>");
+                $('#content').css('border', '1px solid lightgray');
+                $("img").attr({"width": "50px", "height": "40px"});
+                $('input[type=text]').val('Hello World!');
+
+                /* $.each(["a", "b", "c"], function (index, value) {
+                 alert("Index #" + index + ": " + value);
+                 });*/
+                $("ul").children().css("background-color", "lightcyan");
+                $("ul").children("li.em").css("background-color", "yellow");
+                $("ul").children().eq(1).css("font-weight","bold");
+                console.log( $("ul").children("li.em").index());
+                 $("ul").children("li.em").next().css("color","red");
+                 $("ul").children("li.em").prev().css("color","green");
+                
+
+            }
+        </script>
+    </head>
+    <body>
+        <p id="topic">Hello World!</p>
+        <div id="content"></div>
+        <img src="images/1.jpg">
+        <input  type="text">
+
+        <ul>
+            <li> First </li>
+            <li> Second </li>
+            <li class="em"> Third </li>
+            <li> Fourth</li>
+        </ul>
+    </body>
+</html>

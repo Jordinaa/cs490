@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>RegExp</title>
+        <meta charset="UTF-8">
+
+
+        <script>
+            
+            var pattern = /Le *Guin/;
+            console.log(pattern.test("LeGuin"));
+            console.log(pattern.test("Le Guin"));
+            
+            pattern = /Le +Guin/;
+            console.log(pattern.test("LeGuin"));
+            console.log(pattern.test("Le Guin"));
+            
+            pattern=/[^a-zA-Z0-9_]/;
+            console.log(pattern.test("123"));
+            
+            pattern=/\W/;
+            console.log(pattern.test("123"));
+
+            
+            pattern = /<.+>/;
+            console.log(pattern.test("<>>"));
+            
+            
+            pattern = /<[^<>]+>/;
+            console.log(pattern.test("<<>"));
+            console.log(pattern.test("<r2>")); 
+            
+            var text="cats are fun.  I like ca\nts.".replace(/^ts/m,"dogs");             
+            var pattern = /m.n/;
+            console.log(pattern.test("man"));
+            console.log(pattern.test("mean"));
+
+            pattern = /m.*n/;
+            console.log(pattern.test("mean"));
+            console.log(pattern.test("mn"));
+
+            pattern = /m.+n/;
+            console.log(pattern.test("mn"));
+            console.log(pattern.test("man"));
+
+            pattern = /m.?n/;
+            console.log(pattern.test("mean"));
+            console.log(pattern.test("mn"));
+
+            pattern = /wom[ae]n/;
+            console.log(pattern.test("womln"));
+            console.log(pattern.test("women"));
+
+            pattern = /m[^ae]n/;
+            console.log(pattern.test("man"));
+            console.log(pattern.test("mtn"));
+
+            pattern = /m(ea|oder)n/;
+            console.log(pattern.test("mean"));
+            console.log(pattern.test("modern"));
+            
+             pattern = /^We/;
+            console.log(pattern.test("We are the champions"));
+            console.log(pattern.test("W3c.org"));           
+            
+            pattern = /KC$/;
+            console.log(pattern.test("I live in KC"));
+            console.log(pattern.test("I live in KC, MO"));
+            
+            pattern = /\bse/;
+            console.log(pattern.test("Change the settings"));
+            console.log(pattern.test("Rinse your hair")); 
+            
+            pattern=/\s/;
+            console.log(pattern.test("Yes"));
+            console.log(pattern.test("Hello there!"));
+            
+            pattern=/Yah(o{3})!/;
+            console.log(pattern.test("Yahooo!"));
+            console.log(pattern.test("Yahoooooooo!"));  
+            
+            pattern=/G(o{2,5}gle)/;
+            console.log(pattern.test("Gogle"));
+            console.log(pattern.test("Google"));
+            console.log(pattern.test("Gooooogle"));
+            console.log(pattern.test("Goooooogle"));
+            
+        </script>
+    </head>
+    <body>
+    </body>
+</html>

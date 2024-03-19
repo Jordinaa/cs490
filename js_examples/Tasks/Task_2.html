@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Counter</title>
+        <meta charset="UTF-8">
+        <style>
+            div.counter{
+                position:absolute;
+                top:200px;
+                left:200px;
+                width:300px;
+                height:300px;
+                font-size:100px;
+                line-height: 300px;
+                text-align: center;
+                border:1px solid lightgray;
+                border-radius:5px;
+            }
+            button{
+                position:absolute;
+                top:500px;
+                left:200px;
+            }
+            button#reset{
+                left:260px;
+            }
+        </style>
+        <script>
+            var counter=0;
+            var paused=false;
+            var timer;
+            function $(id){
+                return document.getElementById(id);
+            }
+            function change_counter(){
+                ++counter;
+                $("counter").innerHTML=counter;
+            }
+            function toggle(){
+                if(paused){
+                    $("button").innerHTML="Pause";
+                    paused=false;
+                    timer=setInterval(change_counter,1000); //reset the timer
+                }
+                else{
+                     $("button").innerHTML="Resume";
+                     paused=true;
+                     clearInterval(timer);
+                }
+            }
+
+            function init(){
+                timer=setInterval(change_counter,1000);
+                $("button").addEventListener('click',toggle);
+            }
+        </script>
+    </head>
+    <body onload="init()">
+        <div id="counter" class="counter">0</div>
+        <button id="button">Pause</button>
+        <button id="reset">Reset</button>
+    </body>
+</html>

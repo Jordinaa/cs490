@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Search on Demand</title>
+        <meta charset="UTF-8">
+        <style>
+            input.text{
+                color:gray;
+                border-width:1px;
+                border-color: lightgray;
+                border-style: solid;
+                width: 150px;
+            }
+
+            div.suggestions{
+                position:absolute;
+                top:25px;
+                z-index:50;
+                border-color:lightgray;
+                background-color:white;
+                border-style:solid;
+                border-width: 1px;
+                width:150px;
+                overflow:auto;
+                display:none;
+            }
+
+            div.sub_suggestions{
+                width:150px;
+            }
+
+            div.sub_suggestions:hover{
+                background-color:gainsboro;
+            }
+        </style>  
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+        <script>
+            $(document).ready(function () {
+                $("#search_button").on('click', search);
+            });
+
+
+
+
+            function search() {
+                var names = ["Sab", "Sam", "Samir", "Samorai", "Sap"];
+                var html = "";
+                var value = $("#field").val(); //get the value of the text field
+                var show = false; //don't show suggestions
+
+                for (var i = 0; i < names.length; ++i) {
+                    var start = names[i].toLowerCase().search(value.toLowerCase().trim());
+                    if (start != -1) { //if there is a search match
+                        html += "<div class='sub_suggestions' id='" + names[i] + "' >";
+                        html += names[i];
+                        html += "</div>";
+                        show = true; //show suggestions
+                    }
+                }
+                if (show) {
+                    $("#suggestions_box").html(html);
+                    $("#suggestions_box").show();
+                }
+                else
+                    $("#suggestions_box").hide();
+            }
+
+
+        </script>
+    </head>
+    <body>
+        <input class="text" id="field" type="text">
+        <button id="search_button"> Search </button>
+        <div id="suggestions_box" class="suggestions">
+
+        </div>
+    </body>
+</html>

@@ -1,0 +1,84 @@
+.icons{
+    position:relative;
+    top:10px;
+    height:40px;
+}
+
+.icons img{
+    float:right;
+}
+
+.icons img:hover{
+    cursor:pointer;
+}
+
+.grid {
+    position:relative;
+}
+
+.grid .photo{
+    position:relative;
+    float:left;
+    width: 162px;
+    height: 162px;
+    margin:10px;
+}
+
+
+
+.grid .photo img , .list .photo img{
+    position:absolute;
+    top:0px;
+    left:0px;
+    background-color: white;
+    padding: 5px;
+    border:1px solid lightgray;
+    width: 150px;
+    height: 150px;
+}
+
+.grid .description{
+    position:absolute;
+    left:6px;
+    bottom:6px;
+    height:35px;
+    width:150px;
+    background-color:rgba(0,0,0,0.3);
+    color:white;
+    line-height: 35px;
+    text-align: center;
+}
+
+.grid .date{
+    display:none;
+    background-color:yellow;
+}
+
+.list {
+    position:relative;
+}
+
+.list .photo{
+    position:relative;
+    display:block;
+    width:70%;
+    height:170px;
+    padding:10px;
+    border-bottom:lightgray 1px dotted;
+}
+
+.list div.description, .list .date{
+    position:absolute;
+    top:10px;
+    color: black;
+    left:250px;
+    font-size:25px;
+}
+
+.list .date{
+    top:100px;
+    color:gray;
+    font-size:15px;  
+}
+
+

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Photo Gallery</title>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" type="text/css" href="style/gallery.css">
+        <script id="photo-template" type="text/html">
+        <div class='photo'>
+            <img src='{{path}}'>
+            <div class='description'>{{description}}</div>
+            <div class='date'>{{date}}</div>    
+        </div> 
+    </script>      
+    <script id="circle-template" type="text/html">
+        <div class='circle'>
+
+        </div>
+    </script>      
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script src="data/data.js"></script>
+    <script src="script/htmlMaker.js"></script>
+    <script src="script/gallery.js"></script>
+</head>
+<body>
+    <div class="album">
+        <div class="photos" id="photos"></div>
+    </div>
+    <div  class="navigator">
+        <div class="circles" id="circles"></div>
+    </div>
+</body>
+</html>

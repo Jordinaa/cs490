@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Form Validation</title>
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+
+        <script>
+            $(document).ready(function () { 
+                //when an element gets clicked, call reset_element
+                $(".element").on("click",function(){
+                    var feedback="#"+$(this).attr('id')+"_feedback";
+                    reset_element(this,feedback);});
+                //bind the components with their validate functions
+                $("#username").on("blur",function(){validate_username("#username","#username_feedback")});
+                $("#position").on("blur",function(){validate_username("#position","#position_feedback")});
+            });
+
+            function error_style(element, feedback) {
+                $(element).css("border-color","red");
+                $(feedback).css("color","red");
+            }
+
+            function correct_style(element, feedback) {
+                $(element).css("border-color","lightgray");
+                $(feedback).css("color","green");
+                $(feedback).html("&#10004");//the check mark
+            }
+
+            function reset_element(element,feedback) {
+                $(element).css("border-color","lightgray");
+                $(feedback).css("color","black");
+                $(feedback).html("");
+            }
+            
+            function validate_position(position,feedback){
+                if($(position).val()=="none"){
+                    $(feedback).text("You must select a position");
+                    error_style(position,feedback);
+                }
+                else
+                    correct_style(position,feedback);
+            }
+            
+            function validate_username(username,feedback){
+                var value=$(username).val().trim();
+                if(value==null || value==""){
+                    $(feedback).text("Username can't be empty");
+                    error_style(username,feedback);
+                }
+                else if (value.length < 6 || value.length>10) {
+                    $(feedback).text("Username must be 6-10 characters");
+                    error_style(username, feedback);
+                }
+                else if(/[^a-zA-Z_]+/.test(value)){
+                    $(feedback).text("Only word letters (a-z, A-Z, _)");
+                    error_style(username, feedback);                    
+                }
+                else
+                    correct_style(username, feedback);                
+            }
+            
+        </script>
+
+        <style>
+
+            div{
+                padding-top: 6px;
+            }
+
+            form{
+                border-color:lightgray;
+                border-width:1px;
+                border-style: solid;
+                width:60%;
+            }
+
+            label{
+                font-weight:bold;
+                font-family: tahoma;
+                font-size: 12px;
+                text-align: right;
+                width:100px;
+                display:block;
+                float:left;
+                padding:5px;
+            }
+
+            .input,.submit{
+                border-color:lightgray;
+                border-width:1px;
+                border-style:solid;
+            }
+            .submit{
+                margin:5px;
+                margin-left:50px;
+            }
+
+        </style>
+
+    </head>
+    <body>
+        <form>
+
+            <div> <label>Username:</label>  
+                <input class="element" type="text" id="username" onfocus="reset_element(this);" onblur="validate_username(this);"> <span id="username_feedback"></span>
+            </div>
+            <div>
+                <label>Position:</label>
+                        <select class="element" id="position" onfocus="reset_element(this);" onblur="validate_position(this);">
+                            <option value="none">Not selected</option>
+                            <option value="engineer">Engineer</option>
+                            <option value="doctor">Doctor</option>
+                            <option value="mechanic">Car Mechanic</option>
+                        </select>
+                        <span id="position_feedback"></span>
+            </div>
+            <div>
+            <input class="submit" type="submit" value="Submit"> 
+            </div>
+
+        </form>
+    </body>
+</html>
+

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        div.canvas{
+            margin-top:30px;
+            margin-left:30px;
+            width:300px;
+            height:300px;
+            display:block;
+            background-color:yellow;
+        }
+</style>
+<script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+<script>
+    
+    $(document).ready(function () { 
+     $('#form').bind("submit",function(){ 
+       alert("Submit happened!");
+    })
+    .bind("select",function(){ 
+       alert("Select happened!")
+    })
+    .bind("copy",function(){ 
+       alert("Copy happened!")
+    }) 
+    .bind("paste",function(){ 
+       alert("Paste happened!")
+    })  
+    .bind("cut",function(){ 
+       alert("Cut happened!")
+    })   
+    .bind("change",function(){ 
+       alert("Change happened!")
+    })      
+    .bind("reset",function(){ 
+       alert("Reset happened!");
+    });        
+    
+});
+
+</script>
+
+</head>
+<body>
+    <form id="form">
+        <label>Name<input type="text" id="textbox"></label>
+        <label>Department:
+        <select>
+            <option>Computer Science</option>
+            <option>Chemistry</option>
+        </select>
+        </label>
+        <input id="submit" type="Submit" value="Submit">
+        <input id="reset" type="reset" value="Reset">
+    </form>
+
+
+    
+</body>
+</html>
+

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Task 3</title>
+        <script>
+            function compare_city(a,b){
+                if(a.city==b.city && a.state==b.state)
+                    return 0;
+                if(a.city==b.city){
+                    if(a.state<b.state)
+                        return -1;
+                    return 1;
+                }
+                if(a.city<b.city)
+                    return -1;
+                return 1;
+            }
+            function sort_cities(){
+            var cities=[{city:"SpringField",state:"MO"},{city:"Kansas City",state:"MO"},{city:"Kansas City",state:"KS"},{city:"SpringField",state:"AR"}];
+            cities.sort(compare_city);
+        }
+        </script>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body onload="sort_cities();">
+
+    </body>
+</html>

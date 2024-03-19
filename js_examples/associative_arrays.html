@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Arrays</title>
+        <meta charset="UTF-8">
+        <script>
+            function run(){
+                var map = {"123":"John Smith","124":"Kim Ryan","125":"Joseph"};
+                var item=map["123"];
+                map["126"] = "Samir"; //add an item
+                delete map["123"]; //delete John Smith
+                
+                /*iterate through the associative array*/
+                for (var key in map) {
+                    item=map[key];
+                    console.log(item+" ");
+                }
+
+            
+            }
+
+        </script>
+    </head>
+    <body onload="run()">
+    </body>
+</html>

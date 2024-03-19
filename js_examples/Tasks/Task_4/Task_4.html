@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Gallery</title>
+        <meta charset="UTF-8">
+        <style>
+            div.buttons{
+                position:absolute;
+                top:360px;
+            }
+            div.gallery{
+                position: absolute;
+                display:block;
+                height:350px;
+                width:calc(170px * 2 + 10px);
+                overflow:hidden;
+                background-color:rgb(245,245,245);
+                border:1px solid lightgray;
+            }
+            div.mover{
+                transition:  2s; /*Standard, IE 10*/
+                -webkit-transition:   2s; /* For Chrome, Safari*/
+                -moz-transition:  2s; /* For Firefox*/
+                -o-transition:  2s; /* For Opera*/
+            }
+            div.gallery img{
+                position: relative;
+                padding:5px;
+                background-color:white;
+                border:1px solid lightgray;
+                height:150px;
+                width:150px;
+                margin:5px;
+            }
+
+        </style>
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+        <script>
+//solution goes here
+        </script>
+    </head>
+    <body>
+        <div class="gallery">
+            <div class='mover'>
+                <img src="1.jpg">
+                <img src="2.jpg">
+                <img src="3.jpg">
+                <img src="4.jpg">
+                <img src="5.jpg">
+                <img src="6.jpg">
+            </div>
+        </div>
+        <div class="buttons">
+        <button id="down">DOWN</button><button id="up">UP</button>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        div.canvas{
+            margin-top:30px;
+            margin-left:30px;
+            width:300px;
+            height:300px;
+            display:block;
+            background-color:yellow;
+        }
+</style>
+<script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+<script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+<script>
+    
+    $(document).ready(function () { 
+     $('#canvas').on("tap",function(){ 
+       $("#message").text("Tap");
+    })
+    .on("taphold",function(){ 
+       $("#message").text("Tap Hold");
+    }) 
+    .on("swipe",function(){ 
+       $("#message").text("Swipe");
+    }) 
+    .on("swipeleft",function(){ 
+       $("#message").text("Swipe Left");
+    })    
+    .on("swiperight",function(){ 
+       $("#message").text("Swipe Right");
+    });      
+});
+
+</script>
+
+</head>
+<body>
+    
+    <div id="canvas" class="canvas"></div>
+    <div id="message"></div>
+
+
+    
+</body>
+</html>
+

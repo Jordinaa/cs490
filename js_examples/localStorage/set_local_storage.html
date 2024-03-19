@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Set local storage</title>
+        <meta charset="UTF-8">
+        <script>
+            function $(id){
+                return document.getElementById(id);
+            }
+            
+            function set_storage(){
+                localStorage.setItem("name", $("text").value);
+                sessionStorage.setItem("name", $("text").value+" Session");
+            }
+            
+        </script>
+    </head>
+    <body>
+        <input id="text" type="text"><button onclick="set_storage()">Set storage</button>
+    </body>
+</html>

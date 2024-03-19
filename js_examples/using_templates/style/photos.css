@@ -1,0 +1,88 @@
+
+
+.icons{
+    position:relative;
+    top:10px;
+    height:40px;
+}
+
+.icons img{
+    float:right;
+}
+
+.grid {
+    position:relative;
+
+}
+
+.grid div.photo{
+    position:relative;
+    float:left;
+    width: 162px;
+    height: 162px;
+    margin:10px;
+}
+
+
+
+.grid div.photo img , .list div.photo img{
+    position:absolute;
+    top:0px;
+    left:0px;
+    background-color: white;
+    padding: 5px;
+    border:1px solid lightgray;
+    width: 150px;
+    height: 150px;
+}
+
+.grid div.photo div.description{
+    position:absolute;
+    left:6px;
+    bottom:6px;
+    height:35px;
+    width:150px;
+    background-color:rgba(0,0,0,0.3);
+    color:white;
+    line-height: 35px;
+    text-align: center;
+}
+
+.grid div.photo div.date{
+    display:none;
+    background-color:yellow;
+}
+
+.list {
+    position:relative;
+
+}
+
+.list div.photo{
+    position:relative;
+    display:block;
+    width:70%;
+    height:170px;
+    padding:10px;
+    border-bottom:lightgray 1px dotted;
+}
+
+.list div.photo div.description{
+    display:none;
+}
+
+.list div.photo  p.description, .list div.photo  .date{
+    position:absolute;
+    top:10px;
+    color: black;
+    left:250px;
+    font-size:25px;
+}
+
+.list div.photo .date{
+    top:100px;
+    color:gray;
+    font-size:15px;
+    
+}
+

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        input.text{
+            color:gray;
+            border-width:1px;
+            border-color: lightgray;
+            border-style: solid;
+            width: 150px;
+        }
+</style>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+<script>
+    
+    $(document).ready(function () { 
+     $('#textbox').bind("keypress",function(e){ 
+       $("#message").text("Key press: "+String.fromCharCode( e.which ));
+    })
+    .bind("keyup",function(){ 
+       $("#message").text("Key Up");
+    })
+    .bind("keydown",function(){ 
+       $("#message").text("Key Down");
+    });    
+    
+    });
+    
+</script>
+
+</head>
+<body>
+
+    <input class="text" id="textbox" type="text">
+    <div id="message"></div>
+
+
+    
+</body>
+</html>
