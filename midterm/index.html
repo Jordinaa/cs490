@@ -1,59 +1,193 @@
+<!-- Author: Jordan Taranto & Carolynn Knapp -->
+<!-- Source: form_validation.html in js examples -->
+<!-- https://www.sitepoint.com/basic-jquery-form-validation-tutorial/#step5createthevalidationrules -->
+
 <!DOCTYPE html>
 <html>
-<head>
-    <title>Midterm</title>
-</head>
+    <head>
+        <!-- title -->
+        <title>Midterm</title>
+        <!-- adding jquery -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+        <!-- js/jquery funcs and gross regex -->
+        <script>
+            $(document).ready(function () { 
+                // when clicked call reset_element 
+                $(".element").on("click", function() {
+                    var feedback = "#" + $(this).attr('id') + "_feedback";
+                    reset_element(this, feedback);
+                });
+                
+                // Validation bindings
+                $("#uname").on("blur", function() { validate_username("#uname", "#uname_feedback"); });
+                $("#email").on("blur", function() { validate_email("#email", "#email_feedback"); });
+                $("select[name='position']").on("change", function() { validate_position("#position", "#position_feedback"); });
+                $("[name='contact']").on("change", function() { validate_contact("#contact_feedback"); });
+
+                // Initial call to validate contact to handle page load with no selection
+                validate_contact("#contact_feedback");
+            });
+
+            function error_style(element, feedback) {
+                $(element).css("border-color", "red");
+                $(feedback).css("color", "red");
+            }
+
+            function correct_style(element, feedback) {
+                $(element).css("border-color", "lightgray");
+                $(feedback).css("color", "green");
+                // check mark
+                $(feedback).html("&#10004;");
+            }
+
+            function reset_element(element, feedback) {
+                $(element).css("border-color", "lightgray");
+                $(feedback).css("color", "black");
+                $(feedback).html("");
+            }
+
+            function validate_position(position, feedback) {
+                if ($(position).val() === "default") {
+                    $(feedback).text("You must select a position");
+                    error_style(position, feedback);
+                } else {
+                    correct_style(position, feedback);
+                }
+            }
+
+            function validate_username(username, feedback) {
+                var value = $(username).val().trim();
+                if (value === "") {
+                    $(feedback).text("Username can't be empty");
+                    error_style(username, feedback);
+                } else if (value.length < 6 || value.length > 10) {
+                    $(feedback).text("Username must be 6-10 characters");
+                    error_style(username, feedback);
+                } else if (/[^a-zA-Z_]+/.test(value)) {
+                    $(feedback).text("Only letters (a-z, A-Z, _) are allowed");
+                    error_style(username, feedback);
+                } else {
+                    correct_style(username, feedback);
+                }
+            }
+
+            function validate_email(email, feedback) {
+                var value = $(email).val().trim();
+                // email verification using regex which sucks a lot 
+                // would preferrably use a seperate javascript file and load that in after html is loaded 
+                var emailRegex = /^[a-zA-Z0-9_]+@[a-zA-Z0-9_]+\.[a-zA-Z0-9_]+$/;
+                if (!emailRegex.test(value) || (value.match(/@/g) || []).length !== 1) {
+                    $(feedback).text("Invalid email format");
+                    error_style(email, feedback);
+                } else {
+                    correct_style(email, feedback);
+                }
+            }
+
+            function validate_contact(feedback) {
+                if (!$("[name='contact']:checked").val()) {
+                    $(feedback).text("Please select Full-time or Part-time");
+                    $(feedback).css("color", "red");
+                } else {
+                    // check mark
+                    $(feedback).html("&#10004;").css("color", "green"); 
+                }
+            }
+        </script>
+        
+        <!-- css styling -->
+        <style>
+
+            div{
+                padding-top: 6px;
+            }
+
+            form{
+                border-color:lightgray;
+                border-width:1px;
+                border-style: solid;
+                width:60%;
+            }
+
+            label{
+                font-weight:bold;
+                font-family: tahoma;
+                font-size: 12px;
+                text-align: right;
+                width:100px;
+                display:block;
+                float:left;
+                padding:5px;
+            }
+
+            .input,.submit{
+                border-color:lightgray;
+                border-width:1px;
+                border-style:solid;
+            }
+            .submit{
+                margin:5px;
+                margin-left:50px;
+            }
+
+        </style>
+    </head>
+
+
+<h1>Midterm Login</h1>
 <body>
-
-    <h1>Midterm Login</h1>
     <fieldset>
-    <table>    
-    <!-- username -->
-    <tr>
-        <td><label for="uname">Username:</label></td>
-        <td><input type="text" id="uname" name="uname"/></td>
-    </tr>
+        <!-- <form> -->
+            <table>    
+                <!-- username -->
+                <tr>
+                    <td><label for="uname">Username:</label></td>
+                    <td><input type="text" id="uname" name="uname"/></td>
+                </tr>
 
-    <!-- email -->
-    <tr>
-        <td><label for="email">E-mail:</label></td>
-        <td><input type="text" id="email" name="email"/></td>
-    </tr>
-    
-    <!-- position -->
-    <tr>
-        <td><label for="position">Position:</label></td>
-        <td>
-            <select name="position" id="position">
-                <option value="default">Not selected</option>
-                <option value="engineer">Engineer</option>
-                <option value="doctor">Doctor</option>
-                <option value="mechanic">Mechanic</option>
-            </select>
-        </td>
-    </tr>
+                <!-- email -->
+                <tr>
+                    <td><label for="email">E-mail:</label></td>
+                    <td><input type="text" id="email" name="email"/></td>
+                </tr>
+                
+                <!-- position -->
+                <tr>
+                    <td><label for="position">Position:</label></td>
+                    <td>
+                        <select name="position" id="position">
+                            <option value="none">Not selected</option>
+                            <option value="engineer">Engineer</option>
+                            <option value="doctor">Doctor</option>
+                            <option value="mechanic">Mechanic</option>
+                        </select>
+                    </td>
+                </tr>
 
-    <!-- type -->
-    <!-- edits -->
-    <tr>
-        <td>Type:</td>
-        <td>
-            <input type="radio" id="email" name="contact" value="email"/>
-            <label for="email">Full-time</label><br/>
-            <input type="radio" id="phone" name="contact" value="phone"/>
-            <label for="phone">Part-time</label>
-        </td>
-    </tr>
+                <!-- type -->
+                <tr>
+                    <td><label> for=</label>Type:</td>
+                    <td>
+                        <input type="radio" id="full-time" name="contract" value="full-time"/>
+                        <label for="full-time">Full-time</label><br/>
+                        <input type="radio" id="part-time" name="contract" value="part-timeone"/>
+                        <label for="part-time">Part-time</label>
+                    </td>
+                </tr>
 
-    <!-- submit -->
-    <tr>
-        <td>
-            <input type="submit" value="Submit">
-        </td>                
-    </tr>
-    </table>
+                <!-- submit button -->
+                <tr>
+                    <td>
+                        <input type="submit" value="Submit">
+                    </td>                
+                </tr>
+            
+            </table>
+        <!-- </form> -->
     </fieldset>
-
 </table>
+
+
 </body>
 </html>
