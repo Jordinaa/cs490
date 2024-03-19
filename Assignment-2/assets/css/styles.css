@@ -1,0 +1,82 @@
+/* Marquee scroll thingy */
+/* no font size given in assignment just size of image */
+.marquee {
+    border: 1px solid #ddd;
+    background-color: #ffffff;
+    color: black;
+    height: 20px;
+}
+/* latest overlay on scroll */
+.marquee .latest-label {
+    position: absolute; 
+    height: 20px;
+    color: #ffffff;
+    background-color: darkblue;
+}
+/* NBA image on marquee */
+.marquee img {
+    height: 20px;
+    width: 15px;
+    vertical-align: middle;
+}
+/* hover effect for text - underline and pointer */
+.marquee span:hover {
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+
+/* News details */
+.news {
+    display: flex;
+    border: 1px solid #ddd; 
+    background-color: aliceblue;
+    width: 82%;
+    padding-left: 10px;
+}
+/* header */
+.news h1 {
+    font-size: 18px; 
+    color: #000000; 
+}
+/* date */
+.news .date {
+    font-size: 13px;
+    color: gray;
+    padding-top: 20px;
+}
+/* news details */
+.news .details {
+    font-size: 17px;
+    line-height: 1.4;
+    padding-top: 20px;
+}
+
+/* image settings */
+.news .image-container{
+    position: relative;
+    width: 200px;
+    height: 200px;
+    padding: 10px;
+}
+.news .image-container img {
+    /* position: relative; */
+    width: 200px;
+    height: 200px;
+    overflow: hidden;
+}
+.news .image-container .hover-text {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    font-size: 20px;
+    text-align: center;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+.news .image-container:hover .hover-text {
+    opacity: 1;
+}

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Registration Page</title>
+</head>
+<body>
+
+    <h1>Registration Form</h1>
+    <a href="index.html">Home</a>
+
+    <!-- login information -->
+    <fieldset>
+    <legend>Log in information:</legend>
+    <table>
+    <tr>
+        <td><label for="uname">Username:</label></td>
+        <td><input type="text" id="uname" name="uname"/></td>
+    </tr>
+    <tr>
+        <td><label for="pword">Password:</label></td>
+        <td><input type="text" id="pword" name="pword"/></td>
+    </tr>
+    </table>
+    </fieldset>
+
+    <!-- personal information -->
+    <fieldset>
+    <legend>Personal information:</legend>
+    <table>
+    <tr>
+        <td><label for="position">Position:</label></td>
+        <td>
+            <select name="position" id="position">
+                <option value="engineer">engineer</option>
+                <option value="scientist">scientist</option>
+            </select>
+        </td>
+    </tr>
+
+    <!-- gender -->
+    <tr>
+        <td>Gender:</td>
+        <td>
+            <input type="radio" id="male" name="gender" value="male"/>
+            <label for="male">Male</label>
+            <input type="radio" id="female" name="gender" value="female"/>
+            <label for="female">Female</label><br/>
+        </td>
+    </tr>
+    
+    <!-- contact preference -->
+    <tr>
+        <td>Contact preference:</td>
+        <td>
+            <input type="checkbox" id="email" name="contact" value="email"/>
+            <label for="email">Email</label><br/>
+            <input type="checkbox" id="phone" name="contact" value="phone"/>
+            <label for="phone">Phone</label>
+        </td>
+    </tr>
+
+    <!-- picture -->
+    <tr>
+        <td>Picture:</td>
+        <td><input type="file" id="pic" name="pic"/></td>
+    </tr>
+
+    <!-- date of birth -->
+    <tr>
+        <td>Date of Birth:</td>
+        <td>
+            <input type="date" id="date" name="date"/>
+        </td>
+    </tr>
+
+    </table>
+    </fieldset>
+
+    <!-- submit button -->
+    <tr>
+        <td>
+            <input type="submit" value="Submit">
+        </td>                
+    </tr>
+
+</table>
+</body>
+</html>
