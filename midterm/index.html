@@ -1,115 +1,104 @@
-<!-- Author: Jordan Taranto & Carolynn Knapp -->
-<!-- Source: form_validation.html in js examples -->
-<!-- https://www.sitepoint.com/basic-jquery-form-validation-tutorial/#step5createthevalidationrules -->
+<!-- Author(s): Jordan Taranto & Carolyn Knapp -->
+
+<!-- references:
+https://www.sitepoint.com/basic-jquery-form-validation-tutorial/#step5createthevalidationrules
+-->
 
 <!DOCTYPE html>
 <html>
     <head>
         <!-- title -->
         <title>Midterm</title>
-        <!-- adding jquery -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-
-        <!-- js/jquery funcs and gross regex -->
         <script>
-            $(document).ready(function () { 
+            $(document).ready(function () {
                 // when clicked call reset_element 
-                $(".element").on("click", function() {
-                    var feedback = "#" + $(this).attr('id') + "_feedback";
-                    reset_element(this, feedback);
+                $("#myForm").on("submit", function(event) {
+                    event.preventDefault(); 
+                    // validate the fields
+                    validate_username("#uname", "#uname_feedback");
+                    validate_email("#email", "#email_feedback");
+                    validate_position("#position", "#position_feedback");
+                    validate_contact("#contact_feedback");
+                    
+                    // check if they passed
+                    if($(".error").length === 0) {
+                        // valid form
+                        alert("Form is valid!");
+                    }
                 });
+    
+                function error_style(element, feedback) {
+                    $(element).addClass("error").css("border-color", "red");
+                    $(feedback).css("color", "red").show();
+                }
                 
-                // Validation bindings
-                $("#uname").on("blur", function() { validate_username("#uname", "#uname_feedback"); });
-                $("#email").on("blur", function() { validate_email("#email", "#email_feedback"); });
-                $("select[name='position']").on("change", function() { validate_position("#position", "#position_feedback"); });
-                $("[name='contact']").on("change", function() { validate_contact("#contact_feedback"); });
-
-                // Initial call to validate contact to handle page load with no selection
-                validate_contact("#contact_feedback");
-            });
-
-            function error_style(element, feedback) {
-                $(element).css("border-color", "red");
-                $(feedback).css("color", "red");
-            }
-
-            function correct_style(element, feedback) {
-                $(element).css("border-color", "lightgray");
-                $(feedback).css("color", "green");
-                // check mark
-                $(feedback).html("&#10004;");
-            }
-
-            function reset_element(element, feedback) {
-                $(element).css("border-color", "lightgray");
-                $(feedback).css("color", "black");
-                $(feedback).html("");
-            }
-
-            function validate_position(position, feedback) {
-                if ($(position).val() === "default") {
-                    $(feedback).text("You must select a position");
-                    error_style(position, feedback);
-                } else {
-                    correct_style(position, feedback);
+                // check marks
+                function correct_style(element, feedback) {
+                    $(element).removeClass("error").css("border-color", "lightgray");
+                    $(feedback).css("color", "green").html("&#10004;").show();
                 }
-            }
-
-            function validate_username(username, feedback) {
-                var value = $(username).val().trim();
-                if (value === "") {
-                    $(feedback).text("Username can't be empty");
-                    error_style(username, feedback);
-                } else if (value.length < 6 || value.length > 10) {
-                    $(feedback).text("Username must be 6-10 characters");
-                    error_style(username, feedback);
-                } else if (/[^a-zA-Z_]+/.test(value)) {
-                    $(feedback).text("Only letters (a-z, A-Z, _) are allowed");
-                    error_style(username, feedback);
-                } else {
-                    correct_style(username, feedback);
+    
+                function validate_position(position, feedback) {
+                    if ($(position).val() === "none") {
+                        $(feedback).text("You must select a position");
+                        error_style(position, feedback);
+                    } else {
+                        correct_style(position, feedback);
+                    }
                 }
-            }
-
-            function validate_email(email, feedback) {
-                var value = $(email).val().trim();
+    
+                function validate_username(username, feedback) {
+                    var value = $(username).val().trim();
+                    if (value.length < 6 || value.length > 10 || /[^a-zA-Z_]/.test(value)) {
+                        $(feedback).text("Username should be >=6 and <=10");
+                        error_style(username, feedback);
+                    } else {
+                        correct_style(username, feedback);
+                    }
+                }
+    
                 // email verification using regex which sucks a lot 
                 // would preferrably use a seperate javascript file and load that in after html is loaded 
-                var emailRegex = /^[a-zA-Z0-9_]+@[a-zA-Z0-9_]+\.[a-zA-Z0-9_]+$/;
-                if (!emailRegex.test(value) || (value.match(/@/g) || []).length !== 1) {
-                    $(feedback).text("Invalid email format");
-                    error_style(email, feedback);
-                } else {
-                    correct_style(email, feedback);
+                function validate_email(email, feedback) {
+                    var value = $(email).val().trim();
+                    var emailRegex = /^[a-zA-Z0-9_]+@[a-zA-Z0-9_]+\.[a-zA-Z0-9_]+$/;
+                    if (!emailRegex.test(value) || (value.match(/@/g) || []).length !== 1) {
+                        $(feedback).text("Not a valid e-mail address");
+                        error_style(email, feedback);
+                    } else {
+                        correct_style(email, feedback);
+                    }
                 }
-            }
-
-            function validate_contact(feedback) {
-                if (!$("[name='contact']:checked").val()) {
-                    $(feedback).text("Please select Full-time or Part-time");
-                    $(feedback).css("color", "red");
-                } else {
-                    // check mark
-                    $(feedback).html("&#10004;").css("color", "green"); 
+    
+                function validate_contact(feedback) {
+                    if (!$("[name='employment-type']:checked").val()) {
+                        $(feedback).text("You must select a type").css("color", "red").show();
+                        $("#type").addClass("error"); 
+                    } else {
+                        $(feedback).html("&#10004;").css("color", "green").show();
+                        $("#type").removeClass("error");
+                    }
                 }
-            }
+    
+    
+            });
         </script>
-        
-        <!-- css styling -->
+    
+        <!-- css -->
         <style>
-
+    
             div{
                 padding-top: 6px;
             }
-
+    
             form{
                 border-color:lightgray;
                 border-width:1px;
                 border-style: solid;
                 width:60%;
             }
-
+    
             label{
                 font-weight:bold;
                 font-family: tahoma;
@@ -120,7 +109,7 @@
                 float:left;
                 padding:5px;
             }
-
+    
             .input,.submit{
                 border-color:lightgray;
                 border-width:1px;
@@ -130,64 +119,60 @@
                 margin:5px;
                 margin-left:50px;
             }
-
+    
         </style>
     </head>
-
-
-<h1>Midterm Login</h1>
-<body>
-    <fieldset>
-        <!-- <form> -->
-            <table>    
+    
+    <body>
+        <h1>Midterm Login</h1>
+            <form id="myForm">
+    
                 <!-- username -->
-                <tr>
-                    <td><label for="uname">Username:</label></td>
-                    <td><input type="text" id="uname" name="uname"/></td>
-                </tr>
-
+                <div>
+                    <label for="uname">Username:</label>
+                    <input type="text" id="uname" name="uname"/>
+                    <span id="uname_feedback" class="feedback"></span>
+                </div>
+    
                 <!-- email -->
-                <tr>
-                    <td><label for="email">E-mail:</label></td>
-                    <td><input type="text" id="email" name="email"/></td>
-                </tr>
-                
+                <div>
+                    <label for="email">E-mail:</label>
+                    <input type="text" id="email" name="email"/>
+                    <span id="email_feedback" class="feedback"></span>
+                </div>
+    
                 <!-- position -->
-                <tr>
-                    <td><label for="position">Position:</label></td>
-                    <td>
-                        <select name="position" id="position">
-                            <option value="none">Not selected</option>
-                            <option value="engineer">Engineer</option>
-                            <option value="doctor">Doctor</option>
-                            <option value="mechanic">Mechanic</option>
-                        </select>
-                    </td>
-                </tr>
-
+                <div>
+                    <label for="position">Position:</label>
+                    <select name="position" id="position">
+                        <option value="none">Not selected</option>
+                        <option value="engineer">Engineer</option>
+                        <option value="doctor">Doctor</option>
+                        <option value="mechanic">Mechanic</option>
+                    </select>
+                    <span id="position_feedback" class="feedback"></span>
+                </div>
+    
                 <!-- type -->
-                <tr>
-                    <td><label> for=</label>Type:</td>
-                    <td>
-                        <input type="radio" id="full-time" name="contract" value="full-time"/>
-                        <label for="full-time">Full-time</label><br/>
-                        <input type="radio" id="part-time" name="contract" value="part-timeone"/>
-                        <label for="part-time">Part-time</label>
-                    </td>
-                </tr>
-
-                <!-- submit button -->
-                <tr>
-                    <td>
-                        <input type="submit" value="Submit">
-                    </td>                
-                </tr>
-            
-            </table>
-        <!-- </form> -->
-    </fieldset>
-</table>
-
-
-</body>
-</html>
+                <div id="type">
+                    <label>Type:</label>
+                    <label for="full-time">Full-time
+                        <input type="radio" id="full-time" name="employment-type" value="full-time">
+                    </label>
+    
+                    <label for="part-time">Part-time
+                        <input type="radio" id="part-time" name="employment-type" value="part-time">
+                    </label>
+                    <span id="contact_feedback" class="feedback"></span>
+                </div>
+                
+    
+                <!-- submit -->
+                <div>
+                    <input type="submit" value="Submit" class="submit">
+                </div>
+            </form>
+    </body>
+    </html>
+    
+    
